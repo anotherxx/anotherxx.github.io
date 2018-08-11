@@ -14,9 +14,11 @@
 
 
 a:focus,
-a:visited
+a:visited,
+a:link,
+a:active
 {
-  color: black;
+  color: inherit;
 }
 
 
@@ -35,3 +37,6 @@ button
 {
   outline: none;
 }
+
+
+

@@ -3575,8 +3575,10 @@
   text-decoration: none; }
 
 a:focus,
-a:visited {
-  color: black; }
+a:visited,
+a:link,
+a:active {
+  color: inherit; }
 
 body {
   font-size: 16px;
