@@ -1,0 +1,39 @@
+.btn
+{
+  display: inline-block;
+  padding: 15px 25px;
+  font-family: "PFDinTextCondProBold", sans-serif;
+  font-size: 1.3rem;
+  outline: none;
+  border: none;
+  transition: all .5s;
+  text-transform: uppercase;
+  &-orange
+  {
+    background-color: $main-orange;
+    color: white;
+    
+    &:hover
+    {
+      background-color: darken($main-orange, 12%);
+    }
+  }
+
+  &-transparent
+  {
+    color: $main-orange;
+    border: 2px solid $main-orange;
+    background-color: transparent;
+
+    &:hover
+    {
+      background-color: white;
+    }
+  }
+
+}
+
+.mr-20
+{
+  margin-right: 20px;
+}

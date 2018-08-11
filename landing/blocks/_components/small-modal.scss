@@ -1,0 +1,90 @@
+.small-modal
+{
+  width: 30%;
+  padding: 30px 10px;
+  &__title
+  {
+    color: $main-gray;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &-form
+  {
+    &__input-wrapper
+    {
+      position: relative;
+      color: $main-gray;
+
+      input
+      {
+        color: $main-gray;
+        display: block;
+        width: 100%;
+        padding: 15px 15px 15px 35px;
+        border: 1px solid lightgray;
+        border-radius: 1px;
+        outline: none;
+        margin-bottom: 10px;
+
+      }
+
+      textarea
+      {
+        color: $main-gray;
+        display: block;
+        width: 100%;
+        padding: 15px 15px 15px 35px;
+        border: 1px solid lightgray;
+        border-radius: 1px;
+        outline: none;
+        margin-bottom: 10px;
+      }
+
+      i
+      {
+        color: lightgray;
+        position: absolute;
+        top: 15px;
+        left: 10px;
+      }
+    }
+
+    &__btn
+    {
+      font-family: "PFDinTextCondProBold", Helvetica,sans-serif;
+      display: block;
+      width:100%;
+      background-color: $main-orange;
+      color: white;
+      border: none;
+      text-transform: uppercase;
+      padding: 15px;
+
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .small-modal
+  {
+    width: 40%;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .small-modal
+  {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+    .small-modal
+    {
+      width: 80%;
+      padding:25px;
+    }
+}

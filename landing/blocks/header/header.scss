@@ -1,0 +1,92 @@
+header
+{
+    .top-line
+    {
+        height:120px;
+        padding-top: 40px;
+        padding-bottom: 35px;
+        &-logo
+        {
+            h2{
+                color: #666666;
+                text-transform: uppercase;
+            }
+        }
+
+        &-title
+        {
+            text-align: center;
+            h4{
+                color: #666666;
+                font-family: "PFDinTextCondProMedium", sans-serif;
+                text-transform: uppercase;
+                font-weight: 500;
+                font-size: 1.1rem;
+            }
+
+            p{
+                margin: 0;
+                font-family:"PFDinTextCondProLight", sans-serif;
+            }
+
+        }
+
+        &-phone
+        {
+            text-align: right;
+            margin-top: -5px;
+            h2{
+                color: #666666;
+                font-family: "PFDinTextCondProMedium", sans-serif;
+                font-weight:500;
+                font-size: 1.5rem;
+
+                i{
+                    margin-right: 5px;
+                }
+            }
+
+            p {
+                color: #656565;
+                font-size: .9rem;
+                margin-top: 5px;
+            }
+
+        }
+    }
+}
+
+.navigation
+{
+    background-color: $cloud-color;
+
+    ul{
+        li{
+            display: inline-block;
+            text-transform: uppercase;
+
+            a{
+                color: #666666;
+                font-size: 1rem;
+                display: block;
+                padding: 20px 20px;
+                transition: all .2s;
+                &:hover
+                {
+                    background-color: $main-green;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    &--fixed
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 500;
+        width:100%;
+    }
+}
+

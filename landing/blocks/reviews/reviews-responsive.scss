@@ -1,0 +1,22 @@
+@media (max-width: 992px ) {
+
+    .reviews-item-person
+    {
+      flex-direction: column;
+      margin: 15px 0;
+    }
+
+    .reviews-item-person__info
+    {
+      text-align: center;
+      margin-top: 10px;
+      margin-left:0;
+    }
+
+
+    .reviews__wrapper .owl-dots
+    {
+      margin-top: 10px;
+    }
+
+}

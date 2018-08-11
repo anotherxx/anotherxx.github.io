@@ -1,0 +1,90 @@
+.reviews
+{
+  margin-bottom: 40px;
+
+   &__title
+   {
+     text-align: center;
+     margin-bottom: 30px;
+   }
+
+  &__wrapper
+  {
+       .owl-dots
+       {
+         margin-top: 15px;
+         text-align: center;
+       }
+      .owl-dot
+      {
+        background-color: white !important; //confilcts with owl carousel css
+        border: 2px solid $main-orange !important;
+        width:15px;
+        height:15px;
+        border-radius: 50%;
+        outline: none;
+      }
+
+      .owl-dot.active
+      {
+        background-color: $main-orange !important;
+      }
+  }
+
+
+  &-item
+  {
+    &-wrapper
+    {
+      padding: 10px;
+      background-color: $cloud-color;
+    }
+
+    &-image
+    {
+      height: 300px !important;
+    }
+      &-person
+      {
+          display: flex;
+          align-items: center;
+          margin-bottom: 40px;
+          color: $main-gray;
+
+
+           &__avatar
+           {
+             width: 100px !important; //important because conflict with owl carousel css
+             height: 100px;
+             border-radius: 50%;
+           }
+
+           &__info
+           {
+             margin-left: 30px;
+             font-family: "PFDinTextCondProMedium", Helvetica, sans-serif;
+             h2
+             {
+               font-weight: 700;
+               margin-bottom: 5px;
+               text-transform: uppercase;
+             }
+
+             h3
+             {
+               font-weight: 300;
+               text-transform: uppercase;
+             }
+           }
+
+           &__description
+           {
+             font-size: 1.1rem;
+             color: $main-gray;
+           }
+      }
+  }
+
+
+}
+

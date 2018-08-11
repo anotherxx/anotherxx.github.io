@@ -1,0 +1,11 @@
+@media (max-width: 768px) {
+    .footer
+    {
+      text-align: center;
+
+      &__social-links
+      {
+          justify-content: center;
+      }
+    }
+}

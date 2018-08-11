@@ -1,0 +1,122 @@
+.footer
+{
+    color: white;
+    background-color:  $main-gray;
+    padding-top: 50px;
+
+
+    &__title
+    {
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+
+
+    #address-map
+    {
+        height: 300px;
+        width: 100%;
+    }
+
+    .footer__address,.footer__phone
+    {
+        margin-bottom: 20px;
+    }
+
+    .footer__email
+    {
+        margin-bottom: 30px;
+    }
+
+
+    .footer__social-links
+    {
+        display: flex;
+
+        &__link
+        {
+            background-color: #CBCBCB;
+            width: 45px;
+            height:45px;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: relative;
+            & > i
+            {
+                color: $main-gray;
+                position: absolute;
+                font-size: 1.5rem;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+
+        &__ask-button
+        {
+            background-color: transparent;
+            color: white;
+            margin-left: 10px;
+            border: 2px solid white;
+            text-transform: uppercase;
+            font-family: "PFDinTextCondProBold", Helvetica,sans-serif;
+            padding: 5px 25px;
+            transition: background-color .2s;
+
+            &:hover
+            {
+                background: white;
+                color: $main-gray;
+            }
+        }
+
+
+    }
+
+
+    &-info
+    {
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        &__title
+        {
+            font-family: "PFDinTextCondProLight", Helvetica,sans-serif;
+            margin-bottom: 10px;
+        }
+
+        &__confidence,&__city
+        {
+            text-align: center;
+        }
+
+        &__confidence
+        {
+            text-decoration:  dashed;
+        }
+
+        &__author
+        {
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+
+    }
+
+    .example
+    {
+        font-size: 4rem;
+        display: flex;
+        justify-content: center;
+
+        &-item
+        {
+            width: 23%;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid white;
+        }
+    }
+
+}

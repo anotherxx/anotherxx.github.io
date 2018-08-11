@@ -1,0 +1,54 @@
+.our_works
+{
+  margin-bottom: 50px;
+    &__title
+    {
+      text-align: center;
+      color: $main-gray;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+}
+
+.gift
+{
+  margin-bottom: 80px;
+
+  &__title
+  {
+    margin-bottom: 55px;
+  }
+
+  &__promo
+  {
+    margin-bottom: 15px;
+  }
+
+  &__description
+  {
+    color: $main-gray;
+    font-family: "PFDinTextCondProLight", Helvetica,sans-serif;
+    text-transform: initial;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .gift-actions
+  {
+    &__input
+    {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border: 1px solid lightgray;
+      color: $main-gray;
+    }
+
+    &__button
+    {
+      width: 100%;
+       padding:11px;
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.offer-clean
+{
+  background: url("../img/clean_bg.jpg") no-repeat ;
+  color: white;
+  padding-top: 70px;
+  padding-bottom: 30px;
+
+
+  &__title
+  {
+    margin-bottom: 45px;
+      p
+      {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      h1
+      {
+        font-size: 2rem;
+        font-family: "PFDinTextCondProMedium", Helvetica, sans-serif;
+        font-weight: 500;
+      }
+  }
+
+  &__description
+  {
+    margin-bottom: 40px;
+    &-first
+    {
+      font-family: "PFDinTextCondProMedium" , Helvetica, sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    &-second
+    {
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+  }
+
+}

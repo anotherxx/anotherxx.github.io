@@ -1,0 +1,66 @@
+@media (max-width: 768px) {
+    .mobile-navigation
+    {
+      position: relative;
+      background-color: $cloud-color;
+      padding: 10px 30px;
+      color: $main-gray;
+
+      &__hamburger
+      {
+         position: relative;
+         width: 5%;
+         height: 20px;
+         padding: 15px;
+         font-size:  1.3rem;
+         text-align: center;
+         border: 1px solid $main-gray;
+         border-radius: 3px;
+
+         i {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%,-50%);
+         }
+      }
+
+      &__phone
+      {
+        padding-top: 7px;
+        text-align: right;
+
+        i
+        {
+          margin-left: 5px;
+        }
+      }
+
+      &__links
+      {
+        background-color: white;
+        position: absolute;
+        top: 100%;
+        z-index: 10;
+        color: $main-gray;
+        border-radius: 3px;
+        box-shadow: 3px 3px 5px $main-gray ;
+        visibility: hidden;
+        transition: top .2s;
+
+        &--visible
+        {
+          visibility: visible;
+          top: 85%;
+        }
+
+        li{
+          padding:5px 15px;
+        }
+
+
+      }
+
+
+    }
+}

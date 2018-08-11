@@ -1,0 +1,25 @@
+.promo
+{
+  margin-bottom: 50px;
+  &__title
+  {
+    color: $main-orange;
+  }
+  
+  &__description
+  {
+    margin: 30px 0 30px;
+    font-size: 1.13rem;
+    color: $main-gray;
+    text-transform: initial;
+  }
+
+  &__btn
+  {
+    padding: 15px 30px;
+    font-family: "PFDinTextCondProBold", Helvetica ,sans-serif;
+    font-size: .9rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+}

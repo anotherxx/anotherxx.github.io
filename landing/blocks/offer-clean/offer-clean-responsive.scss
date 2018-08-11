@@ -1,0 +1,21 @@
+@media (max-width: 768px)
+{
+  .offer-clean
+  {
+    background-size: auto auto;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: -1px;
+
+    &__title
+    {
+      margin-bottom: 30px;
+    }
+
+    &__description
+    {
+      font-size: 1.4rem;
+    }
+
+  }
+}

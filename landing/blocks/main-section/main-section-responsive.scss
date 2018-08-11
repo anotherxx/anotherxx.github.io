@@ -1,0 +1,35 @@
+@media (max-width: 768px) {
+  .main
+  {
+
+    text-align: center;
+
+    &__slogan
+    {
+      margin-bottom: 96px;
+
+      span
+      {
+        font-size: 1.4rem;
+      }
+    }
+
+    &__title
+    {
+
+      font-size: 1.3rem;
+    }
+
+
+
+    &__buttons > .btn
+    {
+      font-size: 1rem;
+      width: 90%;
+      margin: 0 0 15px;
+    }
+  }
+
+
+
+}
