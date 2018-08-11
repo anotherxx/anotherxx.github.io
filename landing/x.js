@@ -1,191 +1,332 @@
-! function(e, o) {
-    "object" == typeof exports && "undefined" != typeof module ? module.exports = o() : "function" == typeof define && define.amd ? define(o) : e.MicroModal = o()
-}(this, function() {
-    "use strict"
-    var e = function(e, o) {
-            if (!(e instanceof o)) throw new TypeError("Cannot call a class as a function")
-        },
-        o = function() {
-            function e(e, o) {
-                for (var t = 0; t < o.length; t++) {
-                    var i = o[t]
-                    i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(e, i.key, i)
-                }
-            }
-            return function(o, t, i) {
-                return t && e(o.prototype, t), i && e(o, i), o
-            }
-        }(),
-        t = function(e) {
-            if (Array.isArray(e)) {
-                for (var o = 0, t = Array(e.length); o < e.length; o++) t[o] = e[o]
-                return t
-            }
-            return Array.from(e)
+
+
++function ($) {
+    'use strict';
+
+    // MODAL CLASS DEFINITION
+    // ======================
+
+    var Modal = function (element, options) {
+        this.options             = options
+        this.$body               = $(document.body)
+        this.$element            = $(element)
+        this.$dialog             = this.$element.find('.modal-dialog')
+        this.$backdrop           = null
+        this.isShown             = null
+        this.originalBodyPad     = null
+        this.scrollbarWidth      = 0
+        this.ignoreBackdropClick = false
+
+        if (this.options.remote) {
+            this.$element
+                .find('.modal-content')
+                .load(this.options.remote, $.proxy(function () {
+                    this.$element.trigger('loaded.bs.modal')
+                }, this))
         }
-    return function() {
-        var i = ["a[href]", "area[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "button:not([disabled]):not([aria-hidden])", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])'],
-            n = function() {
-                function n(o) {
-                    var i = o.targetModal,
-                        a = o.triggers,
-                        r = void 0 === a ? [] : a,
-                        s = o.onShow,
-                        l = void 0 === s ? function() {} : s,
-                        c = o.onClose,
-                        d = void 0 === c ? function() {} : c,
-                        u = o.openTrigger,
-                        f = void 0 === u ? "data-micromodal-trigger" : u,
-                        h = o.closeTrigger,
-                        v = void 0 === h ? "data-micromodal-close" : h,
-                        g = o.disableScroll,
-                        m = void 0 !== g && g,
-                        b = o.disableFocus,
-                        y = void 0 !== b && b,
-                        w = o.awaitCloseAnimation,
-                        k = void 0 !== w && w,
-                        p = o.debugMode,
-                        E = void 0 !== p && p
-                    e(this, n), this.modal = document.getElementById(i), this.config = {
-                        debugMode: E,
-                        disableScroll: m,
-                        openTrigger: f,
-                        closeTrigger: v,
-                        onShow: l,
-                        onClose: d,
-                        awaitCloseAnimation: k,
-                        disableFocus: y
-                    }, r.length > 0 && this.registerTriggers.apply(this, t(r)), this.onClick = this.onClick.bind(this), this.onKeydown = this.onKeydown.bind(this)
+    }
+
+    Modal.VERSION  = '3.3.7'
+
+    Modal.TRANSITION_DURATION = 300
+    Modal.BACKDROP_TRANSITION_DURATION = 150
+
+    Modal.DEFAULTS = {
+        backdrop: true,
+        keyboard: true,
+        show: true
+    }
+
+    Modal.prototype.toggle = function (_relatedTarget) {
+        return this.isShown ? this.hide() : this.show(_relatedTarget)
+    }
+
+    Modal.prototype.show = function (_relatedTarget) {
+        var that = this
+        var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+
+        this.$element.trigger(e)
+
+        if (this.isShown || e.isDefaultPrevented()) return
+
+        this.isShown = true
+
+        this.checkScrollbar()
+        this.setScrollbar()
+        this.$body.addClass('modal-open')
+
+        this.escape()
+        this.resize()
+
+        this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+
+        this.$dialog.on('mousedown.dismiss.bs.modal', function () {
+            that.$element.one('mouseup.dismiss.bs.modal', function (e) {
+                if ($(e.target).is(that.$element)) that.ignoreBackdropClick = true
+            })
+        })
+
+        this.backdrop(function () {
+            var transition = $.support.transition && that.$element.hasClass('fade')
+
+            if (!that.$element.parent().length) {
+                that.$element.appendTo(that.$body) // don't move modals dom position
+            }
+
+            that.$element
+                .show()
+                .scrollTop(0)
+
+            that.adjustDialog()
+
+            if (transition) {
+                that.$element[0].offsetWidth // force reflow
+            }
+
+            that.$element.addClass('in')
+
+            that.enforceFocus()
+
+            var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
+
+            transition ?
+                that.$dialog // wait for modal to slide in
+                    .one('bsTransitionEnd', function () {
+                        that.$element.trigger('focus').trigger(e)
+                    })
+                    .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
+                that.$element.trigger('focus').trigger(e)
+        })
+    }
+
+    Modal.prototype.hide = function (e) {
+        if (e) e.preventDefault()
+
+        e = $.Event('hide.bs.modal')
+
+        this.$element.trigger(e)
+
+        if (!this.isShown || e.isDefaultPrevented()) return
+
+        this.isShown = false
+
+        this.escape()
+        this.resize()
+
+        $(document).off('focusin.bs.modal')
+
+        this.$element
+            .removeClass('in')
+            .off('click.dismiss.bs.modal')
+            .off('mouseup.dismiss.bs.modal')
+
+        this.$dialog.off('mousedown.dismiss.bs.modal')
+
+        $.support.transition && this.$element.hasClass('fade') ?
+            this.$element
+                .one('bsTransitionEnd', $.proxy(this.hideModal, this))
+                .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
+            this.hideModal()
+    }
+
+    Modal.prototype.enforceFocus = function () {
+        $(document)
+            .off('focusin.bs.modal') // guard against infinite focus loop
+            .on('focusin.bs.modal', $.proxy(function (e) {
+                if (document !== e.target &&
+                    this.$element[0] !== e.target &&
+                    !this.$element.has(e.target).length) {
+                    this.$element.trigger('focus')
                 }
-                return o(n, [{
-                    key: "registerTriggers",
-                    value: function() {
-                        for (var e = this, o = arguments.length, t = Array(o), i = 0; i < o; i++) t[i] = arguments[i]
-                        t.forEach(function(o) {
-                            o.addEventListener("click", function() {
-                                return e.showModal()
-                            })
-                        })
-                    }
-                }, {
-                    key: "showModal",
-                    value: function() {
-                        this.activeElement = document.activeElement, this.modal.setAttribute("aria-hidden", "false"), this.modal.classList.add("is-open"), this.setFocusToFirstNode(), this.scrollBehaviour("disable"), this.addEventListeners(), this.config.onShow(this.modal)
-                    }
-                }, {
-                    key: "closeModal",
-                    value: function() {
-                        var e = this.modal
-                        this.modal.setAttribute("aria-hidden", "true"), this.removeEventListeners(), this.scrollBehaviour("enable"), this.activeElement.focus(), this.config.onClose(this.modal), this.config.awaitCloseAnimation ? this.modal.addEventListener("animationend", function o() {
-                            e.classList.remove("is-open"), e.removeEventListener("animationend", o, !1)
-                        }, !1) : e.classList.remove("is-open")
-                    }
-                }, {
-                    key: "scrollBehaviour",
-                    value: function(e) {
-                        if (this.config.disableScroll) {
-                            var o = document.querySelector("body")
-                            switch (e) {
-                                case "enable":
-                                    Object.assign(o.style, {
-                                        overflow: "initial",
-                                        height: "initial"
-                                    })
-                                    break
-                                case "disable":
-                                    Object.assign(o.style, {
-                                        overflow: "hidden",
-                                        height: "100vh"
-                                    })
-                            }
-                        }
-                    }
-                }, {
-                    key: "addEventListeners",
-                    value: function() {
-                        this.modal.addEventListener("touchstart", this.onClick), this.modal.addEventListener("click", this.onClick), document.addEventListener("keydown", this.onKeydown)
-                    }
-                }, {
-                    key: "removeEventListeners",
-                    value: function() {
-                        this.modal.removeEventListener("touchstart", this.onClick), this.modal.removeEventListener("click", this.onClick), document.removeEventListener("keydown", this.onKeydown)
-                    }
-                }, {
-                    key: "onClick",
-                    value: function(e) {
-                        e.target.hasAttribute(this.config.closeTrigger) && (this.closeModal(), e.preventDefault())
-                    }
-                }, {
-                    key: "onKeydown",
-                    value: function(e) {
-                        27 === e.keyCode && this.closeModal(e), 9 === e.keyCode && this.maintainFocus(e)
-                    }
-                }, {
-                    key: "getFocusableNodes",
-                    value: function() {
-                        var e = this.modal.querySelectorAll(i)
-                        return Object.keys(e).map(function(o) {
-                            return e[o]
-                        })
-                    }
-                }, {
-                    key: "setFocusToFirstNode",
-                    value: function() {
-                        if (!this.config.disableFocus) {
-                            var e = this.getFocusableNodes()
-                            e.length && e[0].focus()
-                        }
-                    }
-                }, {
-                    key: "maintainFocus",
-                    value: function(e) {
-                        var o = this.getFocusableNodes()
-                        if (this.modal.contains(document.activeElement)) {
-                            var t = o.indexOf(document.activeElement)
-                            e.shiftKey && 0 === t && (o[o.length - 1].focus(), e.preventDefault()), e.shiftKey || t !== o.length - 1 || (o[0].focus(), e.preventDefault())
-                        } else o[0].focus()
-                    }
-                }]), n
-            }(),
-            a = null,
-            r = function(e, o) {
-                var t = []
-                return e.forEach(function(e) {
-                    var i = e.attributes[o].value
-                    void 0 === t[i] && (t[i] = []), t[i].push(e)
-                }), t
-            },
-            s = function(e) {
-                if (!document.getElementById(e)) return console.warn("MicroModal v0.3.1: ❗Seems like you have missed %c'" + e + "'", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "ID somewhere in your code. Refer example below to resolve it."), console.warn("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", '<div class="modal" id="' + e + '"></div>'), !1
-            },
-            l = function(e) {
-                if (e.length <= 0) return console.warn("MicroModal v0.3.1: ❗Please specify at least one %c'micromodal-trigger'", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "data attribute."), console.warn("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", '<a href="#" data-micromodal-trigger="my-modal"></a>'), !1
-            },
-            c = function(e, o) {
-                if (l(e), !o) return !0
-                for (var t in o) s(t)
-                return !0
-            }
-        return {
-            init: function(e) {
-                var o = Object.assign({}, {
-                        openTrigger: "data-micromodal-trigger"
-                    }, e),
-                    i = [].concat(t(document.querySelectorAll("[" + o.openTrigger + "]"))),
-                    a = r(i, o.openTrigger)
-                if (!0 !== o.debugMode || !1 !== c(i, a))
-                    for (var s in a) {
-                        var l = a[s]
-                        o.targetModal = s, o.triggers = [].concat(t(l)), new n(o)
-                    }
-            },
-            show: function(e, o) {
-                var t = o || {}
-                t.targetModal = e, !0 === t.debugMode && !1 === s(e) || (a = new n(t), a.showModal())
-            },
-            close: function() {
-                a.closeModal()
-            }
+            }, this))
+    }
+
+    Modal.prototype.escape = function () {
+        if (this.isShown && this.options.keyboard) {
+            this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
+                e.which == 27 && this.hide()
+            }, this))
+        } else if (!this.isShown) {
+            this.$element.off('keydown.dismiss.bs.modal')
         }
-    }()
-})
+    }
+
+    Modal.prototype.resize = function () {
+        if (this.isShown) {
+            $(window).on('resize.bs.modal', $.proxy(this.handleUpdate, this))
+        } else {
+            $(window).off('resize.bs.modal')
+        }
+    }
+
+    Modal.prototype.hideModal = function () {
+        var that = this
+        this.$element.hide()
+        this.backdrop(function () {
+            that.$body.removeClass('modal-open')
+            that.resetAdjustments()
+            that.resetScrollbar()
+            that.$element.trigger('hidden.bs.modal')
+        })
+    }
+
+    Modal.prototype.removeBackdrop = function () {
+        this.$backdrop && this.$backdrop.remove()
+        this.$backdrop = null
+    }
+
+    Modal.prototype.backdrop = function (callback) {
+        var that = this
+        var animate = this.$element.hasClass('fade') ? 'fade' : ''
+
+        if (this.isShown && this.options.backdrop) {
+            var doAnimate = $.support.transition && animate
+
+            this.$backdrop = $(document.createElement('div'))
+                .addClass('modal-backdrop ' + animate)
+                .appendTo(this.$body)
+
+            this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
+                if (this.ignoreBackdropClick) {
+                    this.ignoreBackdropClick = false
+                    return
+                }
+                if (e.target !== e.currentTarget) return
+                this.options.backdrop == 'static'
+                    ? this.$element[0].focus()
+                    : this.hide()
+            }, this))
+
+            if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+
+            this.$backdrop.addClass('in')
+
+            if (!callback) return
+
+            doAnimate ?
+                this.$backdrop
+                    .one('bsTransitionEnd', callback)
+                    .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
+                callback()
+
+        } else if (!this.isShown && this.$backdrop) {
+            this.$backdrop.removeClass('in')
+
+            var callbackRemove = function () {
+                that.removeBackdrop()
+                callback && callback()
+            }
+            $.support.transition && this.$element.hasClass('fade') ?
+                this.$backdrop
+                    .one('bsTransitionEnd', callbackRemove)
+                    .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
+                callbackRemove()
+
+        } else if (callback) {
+            callback()
+        }
+    }
+
+    // these following methods are used to handle overflowing modals
+
+    Modal.prototype.handleUpdate = function () {
+        this.adjustDialog()
+    }
+
+    Modal.prototype.adjustDialog = function () {
+        var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
+
+        this.$element.css({
+            paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
+            paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
+        })
+    }
+
+    Modal.prototype.resetAdjustments = function () {
+        this.$element.css({
+            paddingLeft: '',
+            paddingRight: ''
+        })
+    }
+
+    Modal.prototype.checkScrollbar = function () {
+        var fullWindowWidth = window.innerWidth
+        if (!fullWindowWidth) { // workaround for missing window.innerWidth in IE8
+            var documentElementRect = document.documentElement.getBoundingClientRect()
+            fullWindowWidth = documentElementRect.right - Math.abs(documentElementRect.left)
+        }
+        this.bodyIsOverflowing = document.body.clientWidth < fullWindowWidth
+        this.scrollbarWidth = this.measureScrollbar()
+    }
+
+    Modal.prototype.setScrollbar = function () {
+        var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
+        this.originalBodyPad = document.body.style.paddingRight || ''
+        if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    }
+
+    Modal.prototype.resetScrollbar = function () {
+        this.$body.css('padding-right', this.originalBodyPad)
+    }
+
+    Modal.prototype.measureScrollbar = function () { // thx walsh
+        var scrollDiv = document.createElement('div')
+        scrollDiv.className = 'modal-scrollbar-measure'
+        this.$body.append(scrollDiv)
+        var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+        this.$body[0].removeChild(scrollDiv)
+        return scrollbarWidth
+    }
+
+
+    // MODAL PLUGIN DEFINITION
+    // =======================
+
+    function Plugin(option, _relatedTarget) {
+        return this.each(function () {
+            var $this   = $(this)
+            var data    = $this.data('bs.modal')
+            var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+            if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
+            if (typeof option == 'string') data[option](_relatedTarget)
+            else if (options.show) data.show(_relatedTarget)
+        })
+    }
+
+    var old = $.fn.modal
+
+    $.fn.modal             = Plugin
+    $.fn.modal.Constructor = Modal
+
+
+    // MODAL NO CONFLICT
+    // =================
+
+    $.fn.modal.noConflict = function () {
+        $.fn.modal = old
+        return this
+    }
+
+
+    // MODAL DATA-API
+    // ==============
+
+    $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
+        var $this   = $(this)
+        var href    = $this.attr('href')
+        var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
+        var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+
+        if ($this.is('a')) e.preventDefault()
+
+        $target.one('show.bs.modal', function (showEvent) {
+            if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
+            $target.one('hidden.bs.modal', function () {
+                $this.is(':visible') && $this.trigger('focus')
+            })
+        })
+        Plugin.call($target, option, this)
+    })
+
+}(jQuery);

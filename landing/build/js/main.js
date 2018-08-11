@@ -5,7 +5,6 @@
 	$(".owl-carousel").owlCarousel({
 		loop: false,
 		margin: 10,
-		nav: true,
 		items: 1,
 		nav: false
 	});
@@ -61,9 +60,9 @@
 	var links = $(".navigation a");
 	var mobileLinks = $(".mobile-navigation a");
 	var doScroll = function(e) {
-        	var goToClass = e.target.dataset.goTo;
+        	var goToClass = "." + e.target.dataset.goTo;
         	$('html, body').animate({
-            	scrollTop: $(`.${goToClass}`).offset().top
+            	scrollTop: $(goToClass).offset().top
         	}, 500);
 	};
 	links.click(function(e) {
