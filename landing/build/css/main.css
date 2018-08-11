@@ -3477,7 +3477,7 @@
 .modal-dialog {
     position: relative;
     width: auto;
-    margin: 10px;
+    margin: 10px auto;
 }
 .modal-content {
     position: relative;
@@ -3589,6 +3589,7 @@ button {
   outline: none; }
 
 /***********************COLORS***********************/
+/*********************** RESPONSIVE-BREAKPOINTS ***********************/
 @font-face {
   font-family: "PFDinTextCondProBold";
   src: url("../fonts/PFDin/PFDinTextCondProBold.eot?") format("eot"), url("../fonts/PFDin/PFDinTextCondProBold.woff2") format("woff2"), url("../fonts/PFDin/PFDinTextCondProBold.woff") format("woff"), url("../fonts/PFDin/PFDinTextCondProBold.ttf") format("truetype"), url("../fonts/PFDin/PFDinTextCondProBold.svg#PFDinTextCondProBold") format("svg"); }
@@ -3611,6 +3612,12 @@ button {
 
 .clickable {
   cursor: pointer; }
+
+.mb-1 {
+  margin-bottom: 10px; }
+
+.mb-2 {
+  margin-bottom: 20px; }
 
 .btn {
   display: inline-block;
@@ -3647,9 +3654,25 @@ button {
   text-transform: uppercase;
   font-family: "PFDinTextCondProBold", Helvetica,sans-serif; }
 
-.small-modal {
+@media (max-width: 768px) {
+  .gray-header-lg {
+    font-size: 1.6rem; } }
+
+.small-modal-wrapper {
   width: 30%;
-  padding: 30px 10px; }
+  margin: 10% auto 0; }
+
+.small-modal {
+  width: 100%;
+  padding: 30px 10px;
+  background-color: white;
+  position: relative; }
+  .small-modal__header i {
+    position: absolute;
+    top: -27px;
+    right: 0;
+    color: white;
+    font-size: 1.2rem; }
   .small-modal__title {
     color: #666666;
     text-transform: uppercase;
@@ -3691,18 +3714,14 @@ button {
     text-transform: uppercase;
     padding: 15px; }
 
-@media (max-width: 1200px) {
-  .small-modal {
-    width: 40%; } }
-
 @media (max-width: 992px) {
-  .small-modal {
+  .small-modal-wrapper {
     width: 50%; } }
 
-@media (max-width: 768px) {
-  .small-modal {
-    width: 80%;
-    padding: 25px; } }
+@media (max-width: 767px) {
+  .small-modal-wrapper {
+    margin-top: 15%;
+    width: 80%; } }
 
 header .top-line {
   height: 120px;
@@ -3828,17 +3847,26 @@ header .top-line {
 
 @media (max-width: 768px) {
   .main {
-    text-align: center; }
+    text-align: center;
+    margin-bottom: 30px; }
     .main__slogan {
       margin-bottom: 96px; }
       .main__slogan span {
         font-size: 1.4rem; }
     .main__title {
       font-size: 1.3rem; }
-    .main__buttons > .btn {
+    .main__buttons .btn {
       font-size: 1rem;
-      width: 90%;
-      margin: 0 0 15px; } }
+      width: 45%;
+      margin: 0; } }
+
+@media (max-width: 767px) {
+  .main__buttons .btn {
+    display: block;
+    margin: 0 auto;
+    width: 90%; }
+  .main__buttons .btn:first-child {
+    margin-bottom: 10px; } }
 
 .variants {
   padding-bottom: 100px; }
@@ -3861,9 +3889,12 @@ header .top-line {
     .variant__img > img {
       margin: 0 auto; }
   .variant__title {
+    font-family: "PFDinTextCondProMedium", Helvetica,sans-serif;
     color: #666666;
     text-align: center;
-    margin-bottom: 23px; }
+    text-transform: uppercase;
+    margin-bottom: 23px;
+    font-weight: 300; }
   .variant-actions {
     text-align: center; }
     .variant-actions .button {
@@ -3916,17 +3947,23 @@ header .top-line {
   .variant-modal__price {
     color: #ff9e00; }
 
+@media (max-width: 1200px) {
+  .variant-modal {
+    margin-top: 10%; } }
+
 @media (max-width: 992px) {
   .variant-modal__price {
-    text-align: center; } }
-
-@media (max-width: 768px) {
+    text-align: center; }
   .variant-modal {
-    margin-top: 35px; } }
+    margin-top: 8%; } }
 
 @media (max-width: 768px) {
   .variants {
-    padding-bottom: 40px; } }
+    padding-bottom: 40px; }
+    .variants__title {
+      margin-bottom: 20px; }
+  .variant-modal {
+    margin-top: 35px; } }
 
 .promo {
   margin-bottom: 50px; }
@@ -3946,17 +3983,16 @@ header .top-line {
 
 @media (max-width: 992px) {
   .promo {
-    text-align: center; }
+    text-align: center;
+    margin-bottom: 30px; }
     .promo__btn {
       margin-bottom: 25px; } }
 
 .our_works {
   margin-bottom: 50px; }
   .our_works__title {
-    text-align: center;
-    color: #666666;
     margin-bottom: 40px;
-    font-size: 2rem; }
+    text-align: center; }
 
 .gift {
   margin-bottom: 80px; }
@@ -3983,12 +4019,21 @@ header .top-line {
     font-size: 1.2rem; }
 
 @media (max-width: 992px) {
+  .our_works__title {
+    margin-bottom: 20px; }
   .gift {
-    text-align: center; }
+    text-align: center;
+    margin-bottom: 40px; }
     .gift__title {
-      font-size: 2rem;
+      font-size: 1.6rem;
       text-align: center;
-      margin-bottom: 20px; } }
+      margin-bottom: 20px; }
+    .gift__promo {
+      font-size: 1.3rem; }
+    .gift__description {
+      font-size: 1.1rem; }
+    .gift .gift-actions__button {
+      font-size: 1rem; } }
 
 .reviews {
   margin-bottom: 40px; }
@@ -4080,6 +4125,10 @@ header .top-line {
       font-size: 1.1rem;
       font-weight: 300; }
 
+@media (max-width: 992px) {
+  .offer-clean {
+    padding-top: 40px; } }
+
 @media (max-width: 768px) {
   .offer-clean {
     background-size: auto auto;
@@ -4088,8 +4137,16 @@ header .top-line {
     padding-bottom: -1px; }
     .offer-clean__title {
       margin-bottom: 30px; }
+      .offer-clean__title p {
+        font-size: .9rem; }
+      .offer-clean__title h1 {
+        font-size: 1.2rem; }
     .offer-clean__description {
-      font-size: 1.4rem; } }
+      margin-bottom: 30px; }
+      .offer-clean__description-first {
+        font-size: 1.2rem; }
+    .offer-clean__purchase .btn {
+      font-size: 1rem; } }
 
 .footer {
   color: white;
@@ -4168,9 +4225,11 @@ header .top-line {
       text-align: center;
       border: 1px solid white; }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .footer {
     text-align: center; }
+    .footer__title {
+      font-size: 1.6rem; }
     .footer__social-links {
       -webkit-box-pack: center;
       -webkit-justify-content: center;

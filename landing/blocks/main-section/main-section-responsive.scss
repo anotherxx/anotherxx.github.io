@@ -1,8 +1,9 @@
-@media (max-width: 768px) {
+@media (max-width: $sm) {
   .main
   {
 
     text-align: center;
+    margin-bottom: 30px;
 
     &__slogan
     {
@@ -22,14 +23,36 @@
 
 
 
-    &__buttons > .btn
+    &__buttons
     {
-      font-size: 1rem;
-      width: 90%;
-      margin: 0 0 15px;
+      .btn
+      {
+        font-size: 1rem;
+        width: 45%;
+        margin: 0;
+      }
     }
   }
+}
 
+@media (max-width: $only-mobile)
+{
+  .main
+  {
+    &__buttons
+    {
+      .btn {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+      }
 
+      .btn:first-child
+      {
+        margin-bottom: 10px;
+      }
+
+    }
+  }
 
 }

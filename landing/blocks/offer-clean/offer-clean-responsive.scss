@@ -1,4 +1,11 @@
-@media (max-width: 768px)
+@media(max-width: $md)
+{
+    .offer-clean
+    {
+      padding-top: 40px;
+    }
+}
+@media (max-width: $sm)
 {
   .offer-clean
   {
@@ -10,12 +17,33 @@
     &__title
     {
       margin-bottom: 30px;
+
+      p
+      {
+        font-size: .9rem;
+      }
+
+      h1
+      {
+        font-size: 1.2rem;
+      }
     }
 
     &__description
     {
-      font-size: 1.4rem;
+      margin-bottom: 30px;
+      &-first
+      {
+        font-size: 1.2rem;
+      }
     }
 
+    &__purchase
+    {
+        & .btn
+        {
+          font-size: 1rem;
+        }
+    }
   }
 }

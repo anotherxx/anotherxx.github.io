@@ -1,4 +1,4 @@
-@media (max-width: 992px ) {
+@media (max-width: $md ) {
 
     .reviews-item-person
     {
@@ -12,8 +12,7 @@
       margin-top: 10px;
       margin-left:0;
     }
-
-
+  
     .reviews__wrapper .owl-dots
     {
       margin-top: 10px;

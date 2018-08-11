@@ -1,7 +1,28 @@
-.small-modal
+.small-modal-wrapper
 {
   width: 30%;
+  margin: 10% auto 0;
+}
+
+.small-modal
+{
+  width: 100%;
   padding: 30px 10px;
+  background-color: white;
+  position: relative;
+
+  &__header
+  {
+      i
+      {
+        position: absolute;
+        top: -27px;
+        right: 0;
+        color: white;
+        font-size: 1.2rem;
+      }
+  }
+
   &__title
   {
     color: $main-gray;
@@ -66,25 +87,17 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .small-modal
-  {
-    width: 40%;
-  }
-}
-
-
-@media (max-width: 992px) {
-  .small-modal
+@media (max-width: $md) {
+  .small-modal-wrapper
   {
     width: 50%;
   }
 }
 
-@media (max-width: 768px) {
-    .small-modal
+@media (max-width: $only-mobile) {
+    .small-modal-wrapper
     {
+      margin-top: 15%;
       width: 80%;
-      padding:25px;
     }
 }

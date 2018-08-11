@@ -7,7 +7,7 @@
                     Оставьте заявку на консультацию и наш специалист подробно ответит
                     на все ваши вопросы. Это бесплатно.
                 </div>
-                <button class="btn-transparent promo__btn clickable" data-micromodal-trigger="consulting-modal-section">Бесплатная консультация</button>
+                <button class="btn-transparent promo__btn clickable" data-toggle="modal" data-target="#consulting-modal-section">Бесплатная консультация</button>
             </div>
             <div class="col-md-2">
                 <div>
@@ -17,19 +17,16 @@
         </div>
     </div>
 
-
-
-
-    <div class="modal micromodal-slide" id="consulting-modal-section" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container container small-modal" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-                <header class="modal__header">
-                    <h4 class="small-modal__title">
+    <div class="modal fade" id="consulting-modal-section" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog small-modal-wrapper" role="document">
+            <div class="small-modal">
+                <div class="small-modal__header">
+                    <h4 class="small-modal__title" >
                         Для консультации оставьте свои данные
                     </h4>
-                    <i class="fa fa-close modal__close" aria-label="Close modal" data-micromodal-close></i>
-                </header>
-                <div>
+                    <i class="fa fa-close" data-dismiss="modal" aria-label="Close"></i>
+                </div>
+                <div class="small-modal__body">
                     <form class="small-modal-form">
                         <div class="small-modal-form__input-wrapper">
                             <input class="small-modal-form__input" placeholder="Имя">
@@ -45,4 +42,5 @@
             </div>
         </div>
     </div>
+
 </section>

@@ -1,7 +1,42 @@
-@media(max-width: 768px)
+@media(max-width: $lg)
+{
+  .variant-modal
+  {
+    margin-top: 10%;
+  }
+}
+
+@media (max-width: $md) {
+  .variant-modal
+  {
+    &__price
+    {
+      text-align: center;
+    }
+  }
+
+  .variant-modal
+  {
+    margin-top: 8%;
+  }
+}
+
+
+@media(max-width: $sm)
 {
     .variants
     {
       padding-bottom: 40px;
+
+      &__title
+      {
+        margin-bottom: 20px;
+      }
+    }
+
+    .variant-modal
+    {
+        margin-top: 35px;
     }
 }
+

@@ -1,7 +1,12 @@
-@media (max-width: 768px) {
+@media (max-width: $md) {
     .footer
     {
       text-align: center;
+
+      &__title
+      {
+        font-size: 1.6rem;
+      }
 
       &__social-links
       {

@@ -11,3 +11,12 @@
   text-transform: uppercase;
   font-family: "PFDinTextCondProBold", Helvetica,sans-serif;
 }
+
+
+@media(max-width: 768px)
+{
+  .gray-header-lg
+  {
+    font-size: 1.6rem;
+  }
+}

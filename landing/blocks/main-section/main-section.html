@@ -16,24 +16,25 @@
                     </span>
                 </h2>
                 <div class="main__buttons">
-                        <button class="btn btn-orange mr-20" data-micromodal-trigger="gauger-modal-section">Вызвать Замерщика</button>
+                        <button class="btn btn-orange mr-20"  data-toggle="modal" data-target="#gauger-modal-section">Вызвать Замерщика</button>
                         <button class="btn btn-transparent">Выбрать жалюзи</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal micromodal-slide" id="gauger-modal-section" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container container small-modal" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-                <header class="modal__header">
-                    <h4 class="small-modal__title">
-                        ДЛЯ ВЫЗОВА ЗАМЕРЩИКА
-                        ОСТАВЬТЕ СВОИ ДАННЫЕ
+
+
+    <div class="modal fade" id="gauger-modal-section" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog small-modal-wrapper" role="document">
+            <div class="small-modal">
+                <div class="small-modal__header">
+                    <h4 class="small-modal__title" >
+                        Для вызова замерщика оставьте свои данные
                     </h4>
-                    <i class="fa fa-close modal__close" aria-label="Close modal" data-micromodal-close></i>
-                </header>
-                <div>
+                    <i class="fa fa-close" data-dismiss="modal" aria-label="Close"></i>
+                </div>
+                <div class="small-modal__body">
                     <form class="small-modal-form">
                         <div class="small-modal-form__input-wrapper">
                             <input class="small-modal-form__input" placeholder="Имя">
@@ -49,4 +50,5 @@
             </div>
         </div>
     </div>
+
 </section>

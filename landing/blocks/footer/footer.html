@@ -34,7 +34,7 @@
                     <div class="footer__social-links__link">
                         <i class="fa fa-instagram"></i>
                     </div>
-                    <button class="footer__social-links__ask-button" data-micromodal-trigger="ask-manager-modal">
+                    <button class="footer__social-links__ask-button" data-toggle="modal" data-target="#ask-manager-modal">
                         Задать Вопрос
                     </button>
                 </div>
@@ -68,16 +68,16 @@
     </div>
 
 
-    <div class="modal micromodal-slide" id="ask-manager-modal" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container container small-modal" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-                <header class="modal__header">
-                    <h4 class="small-modal__title">
+    <div class="modal fade" id="ask-manager-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog small-modal-wrapper" role="document">
+            <div class="small-modal">
+                <div class="small-modal__header">
+                    <h4 class="small-modal__title" >
                         Задайте вопрос, и наш менеджер с удовольствием ответит на него
                     </h4>
-                    <i class="fa fa-close modal__close" aria-label="Close modal" data-micromodal-close></i>
-                </header>
-                <div>
+                    <i class="fa fa-close" data-dismiss="modal" aria-label="Close"></i>
+                </div>
+                <div class="small-modal__body">
                     <form class="small-modal-form">
                         <div class="small-modal-form__input-wrapper">
                             <input class="small-modal-form__input" placeholder="Имя">
@@ -87,21 +87,11 @@
                             <input class="small-modal-form__input" placeholder="Телефон">
                             <i class="small-modal-form__icon fa fa-phone"></i>
                         </div>
-                        <div class="small-modal-form__input-wrapper">
-                                <textarea rows="5" placeholder="Ваш вопрос"></textarea>
-                        </div>
-                        <button class="small-modal-form__btn">Задать вопрос</button>
+                        <button class="small-modal-form__btn">Задать Вопрос</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="example">
-        <div class="example-item">1</div>
-        <div class="example-item">2</div>
-        <div class="example-item">3</div>
-        <div class="example-item">4</div>
     </div>
 
 </footer>

@@ -32,9 +32,12 @@
   }
   &__title
   {
+    font-family: "PFDinTextCondProMedium", Helvetica,sans-serif;
     color: $main-gray;
     text-align: center;
+    text-transform: uppercase;
     margin-bottom: 23px;
+    font-weight: 300;
   }
 
   &-actions
@@ -99,7 +102,6 @@
       font-size: 1.3rem;
       color: white;
 
-
     }
   }
 
@@ -124,25 +126,6 @@
       color: $main-orange;
   }
 
-}
-
-@media (max-width: 992px) {
-  .variant-modal
-  {
-    &__price
-    {
-      text-align: center;
-    }
-  }
-}
-
-@media (max-width: 768px)
-{
-  .variant-modal
-  {
-    margin-top: 35px;
-
-  }
 }
 
 
