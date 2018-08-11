@@ -44,6 +44,9 @@ button {
   max-width: 100%;
   height: auto; }
 
+.clickable {
+  cursor: pointer; }
+
 .btn {
   display: inline-block;
   padding: 15px 25px;
