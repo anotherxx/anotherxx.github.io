@@ -195,17 +195,39 @@
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <div class="variant-modal">
+                <div class="variant-modal__header">
+                    <h4 class="variant-modal__title" id="myModalLabel">Горизонтальные жалюзи</h4>
+                    <div class="variant-modal__header__close clickable">
+                        <i class="fa fa-close" data-dismiss="modal" aria-label="Close"></i>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="variant-modal__body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="fotorama variant-modal__images"
+                                 data-width="100%"
+                                 data-arrows="false"
+                            >
+                                <img src="img/types/horizontal/1.jpg" class="fotorama__img">
+                                <img src="img/types/horizontal/2.jpg" class="fotorama__img">
+                                <img src="img/types/horizontal/3.jpg" class="fotorama__img">
+                                <img src="img/types/horizontal/4.jpg" class="fotorama__img">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="variant-modal__text-content" >
+                                Являются популярным видом жалюзи из-за своей универсальности и простоты конструкции.
+                            </div>
+                            <div class="variant-modal__text-content">
+                                В отличии от штор, позволяют плавно регулировать поток света в помещении.
+                                Одновременно с уникальностью дизайна, вертикальные жалюзи - это дешевая альтернатива традиционным шторам.
+                            </div>
+                            <h2 class="variant-modal__price">
+                                от 999 рублей
+                            </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

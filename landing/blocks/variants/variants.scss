@@ -83,6 +83,26 @@
 
 .variant-modal
 {
+  background-color: white;
+  padding: 0 10px;
+  margin-top: 20%;
+
+  &__header
+  {
+    position: relative;
+
+    &__close
+    {
+      position: absolute;
+      top: -30px;
+      right: -11px;
+      font-size: 1.3rem;
+      color: white;
+
+
+    }
+  }
+
   &__title
   {
       color: $main-gray;
@@ -109,7 +129,6 @@
 @media (max-width: 992px) {
   .variant-modal
   {
-    width: 50%;
     &__price
     {
       text-align: center;
@@ -121,8 +140,7 @@
 {
   .variant-modal
   {
-    width:90%;
-
+    margin-top: 35px;
 
   }
 }

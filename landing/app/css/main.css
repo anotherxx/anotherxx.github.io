@@ -326,30 +326,38 @@ header .top-line {
       .variant-actions .button-buy:hover {
         background-color: #23d04a; }
 
-.variant-modal__title {
-  color: #666666;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 10px 0; }
-
-.variant-modal__text-content {
-  font-family: "PFDinTextCondProLight", Helvetica,sans-serif;
-  font-size: 1.1rem;
-  color: #666666;
-  margin-bottom: 30px; }
-
-.variant-modal__price {
-  color: #ff9e00; }
+.variant-modal {
+  background-color: white;
+  padding: 0 10px;
+  margin-top: 20%; }
+  .variant-modal__header {
+    position: relative; }
+    .variant-modal__header__close {
+      position: absolute;
+      top: -30px;
+      right: -11px;
+      font-size: 1.3rem;
+      color: white; }
+  .variant-modal__title {
+    color: #666666;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0; }
+  .variant-modal__text-content {
+    font-family: "PFDinTextCondProLight", Helvetica,sans-serif;
+    font-size: 1.1rem;
+    color: #666666;
+    margin-bottom: 30px; }
+  .variant-modal__price {
+    color: #ff9e00; }
 
 @media (max-width: 992px) {
-  .variant-modal {
-    width: 50%; }
-    .variant-modal__price {
-      text-align: center; } }
+  .variant-modal__price {
+    text-align: center; } }
 
 @media (max-width: 768px) {
   .variant-modal {
-    width: 90%; } }
+    margin-top: 35px; } }
 
 @media (max-width: 768px) {
   .variants {
