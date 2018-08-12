@@ -359,10 +359,13 @@ header .top-line {
       .variant-actions .button-buy:hover {
         background-color: #23d04a; }
 
+.variant-modal-wrapper {
+  width: 80%;
+  margin-top: 10%; }
+
 .variant-modal {
   background-color: white;
-  padding: 0 10px;
-  margin-top: 20%; }
+  padding: 0 10px; }
   .variant-modal__header {
     position: relative; }
     .variant-modal__header__close {
@@ -385,22 +388,22 @@ header .top-line {
     color: #ff9e00; }
 
 @media (max-width: 1200px) {
-  .variant-modal {
+  .variant-modal-wrapper {
     margin-top: 10%; } }
 
 @media (max-width: 992px) {
+  .variant-modal-wrapper {
+    margin-top: 8%; }
   .variant-modal__price {
-    text-align: center; }
-  .variant-modal {
-    margin-top: 8%; } }
+    text-align: center; } }
 
 @media (max-width: 768px) {
+  .variant-modal-wrapper {
+    margin-top: 35px; }
   .variants {
     padding-bottom: 40px; }
     .variants__title {
-      margin-bottom: 20px; }
-  .variant-modal {
-    margin-top: 35px; } }
+      margin-bottom: 20px; } }
 
 .promo {
   margin-bottom: 50px; }

@@ -1,12 +1,18 @@
 @media(max-width: $lg)
 {
-  .variant-modal
+  .variant-modal-wrapper
   {
     margin-top: 10%;
   }
 }
 
 @media (max-width: $md) {
+
+  .variant-modal-wrapper
+  {
+    margin-top: 8%;
+  }
+
   .variant-modal
   {
     &__price
@@ -14,16 +20,18 @@
       text-align: center;
     }
   }
-
-  .variant-modal
-  {
-    margin-top: 8%;
-  }
 }
 
 
 @media(max-width: $sm)
 {
+
+    .variant-modal-wrapper
+    {
+         margin-top:35px;
+
+    }
+
     .variants
     {
       padding-bottom: 40px;
@@ -32,11 +40,6 @@
       {
         margin-bottom: 20px;
       }
-    }
-
-    .variant-modal
-    {
-        margin-top: 35px;
     }
 }
 

@@ -8,6 +8,7 @@
     <title>SomeApp</title>
     <!-- build:css css/main.css -->
     <link rel="stylesheet" href="libs/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="libs/css/animate-css.css">
     <link rel="stylesheet" href="libs/css/fotorama.css">
     <link rel="stylesheet" href="libs/css/owlCarousel.css">
     <link rel="stylesheet" href="libs/font-awesome.css">
@@ -83,22 +84,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h1 class="main__slogan">
+                <h1 class="main__slogan wow bounceInLeft" data-wow-delay="0.2s">
                     <span>Установим жалюзи в вашей квартире</span>
                     <br>
                     <span>За 2 часа с полной гарантией</span>
                     <br>
                     <span>И бесплатной доставкой</span>
                 </h1>
-                <h2 class="main__title">
-                    Закажите выезд замерщика на дом.
-                    <span>
+                <div class="wow bounceInUp" data-wow-delay="0.2s">
+                    <h2 class="main__title">
+                        Закажите выезд замерщика на дом.
+                        <span>
                         Это бесплатно!
                     </span>
-                </h2>
-                <div class="main__buttons">
+                    </h2>
+                    <div class="main__buttons">
                         <button class="btn btn-orange mr-20"  data-toggle="modal" data-target="#gauger-modal-section">Вызвать Замерщика</button>
                         <button class="btn btn-transparent">Выбрать жалюзи</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,9 +140,9 @@
     <section class="variants">
     <div class="container">
         <div class="row">
-            <h2 class="variants__title gray-header-lg">Виды жалюзи</h2>
+            <h2 class="variants__title gray-header-lg wow bounceInUp" data-wow-delay="0.2s">Виды жалюзи</h2>
             <div class="col-sm-6 col-md-3">
-                <div class="variant">
+                <div class="variant wow bounceInUp" data-wow-delay="0.2s">
                     <div class="variant__img">
                         <img src="img/types-1.jpg"
                              alt="Горизонтальные Жалюзи"
@@ -154,7 +157,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
-                <div class="variant">
+                <div class="variant wow bounceInUp" data-wow-delay="0.4s">
                     <div class="variant__img">
                         <img src="img/types-2.jpg"
                              alt="Вертикальные Жалюзи"
@@ -169,7 +172,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
-                <div class="variant">
+                <div class="variant wow bounceInUp" data-wow-delay="0.6s">
                     <div class="variant__img">
                         <img src="img/types-3.jpg"
                              alt="Рулонные Жалюзи"
@@ -184,7 +187,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
-                <div class="variant">
+                <div class="variant wow bounceInUp" data-wow-delay="0.8s">
                     <div class="variant__img">
                         <img src="img/types-4.jpg"
                              alt="Жалюзи Плиссе"
@@ -203,7 +206,7 @@
 
 
     <div class="modal fade" id="variant-modal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog variant-modal-wrapper" role="document">
             <div class="variant-modal">
                 <div class="variant-modal__header">
                     <h4 class="variant-modal__title" id="myModalLabel">Горизонтальные жалюзи</h4>
@@ -243,7 +246,7 @@
     </div>
 
     <div class="modal fade" id="variant-modal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog variant-modal-wrapper" role="document">
             <div class="variant-modal">
                 <div class="variant-modal__header">
                     <h4 class="variant-modal__title" id="myModalLabel2">Горизонтальные жалюзи</h4>
@@ -284,7 +287,7 @@
 
 
     <div class="modal fade" id="variant-modal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog variant-modal-wrapper" role="document">
             <div class="variant-modal">
                 <div class="variant-modal__header">
                     <h4 class="variant-modal__title" id="myModalLabel3">Рулонные жалюзи</h4>
@@ -324,7 +327,7 @@
     </div>
 
     <div class="modal fade" id="variant-modal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog variant-modal-wrapper" role="document">
             <div class="variant-modal">
                 <div class="variant-modal__header">
                     <h4 class="variant-modal__title" id="myModalLabel4">Жалюзи Плиссе</h4>
@@ -402,7 +405,7 @@
                 </div>
                 <button class="btn-transparent promo__btn clickable" data-toggle="modal" data-target="#consulting-modal-section">Бесплатная консультация</button>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 wow zoomIn" data-wow-delay="0.2s">
                 <div>
                     <img src="img/help_img.jpg" alt="">
                 </div>
@@ -464,7 +467,7 @@
 <section class="gift">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 wow tada" data-wow-delay="0.1s">
                 <img src="img/gift.jpg" alt="xxx">
             </div>
             <div class="col-md-8">
@@ -489,7 +492,7 @@
     </div>
 </section>
     <section class="reviews">
-    <div class="reviews__title gray-header-lg text-center">Отзывы о нашей работе</div>
+    <div class="reviews__title gray-header-lg text-center wow bounceInUp" data-wow-delay="0.1s">Отзывы о нашей работе</div>
     <div class="container">
         <div class="reviews__wrapper owl-carousel owl-theme">
             <div class="item reviews-item">
@@ -621,7 +624,7 @@
             <div class="col-md-5 col-md-offset-1">
                 <div id="address-map"></div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 wow bounceInUp" data-wow-delay="0.2s">
                 <h1 class="footer__title text-upper">Контакты</h1>
                 <div class="footer__address">
                     <div class="footer__address__title text-upper">
