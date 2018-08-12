@@ -95,8 +95,13 @@ gulp.task('clean', function(cb) {
 gulp.task('build', ['clean'], function () {
 	return gulp.src(paths.devDir + '*.html')
 		.pipe( useref())
-		.pipe( gulpif('*.js', jsminify() ))
-		//.pipe( gulpif('*.css', cssmin() ))
+		.pipe( gulpif('*.js', jsminify({
+			ext: {
+                src: '-source.js',
+                min: '.js'
+			}
+		}) ))
+		.pipe( gulpif('*.css', cssmin() ))
 		.pipe( gulp.dest(paths.outputDir) )
 });
 

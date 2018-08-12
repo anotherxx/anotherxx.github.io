@@ -1,6 +1,7 @@
 .offer-clean
 {
-  background: url("../img/clean_bg.jpg") no-repeat ;
+  background: url('http://www.xn----7sbba0ahcftg3a4pra.xn--p1ai/img/clean_bg.jpg') 150px 0  no-repeat #b3a9a7;
+  background-size: cover;
   color: white;
   padding-top: 70px;
   padding-bottom: 30px;
@@ -31,6 +32,7 @@
       font-family: "PFDinTextCondProMedium" , Helvetica, sans-serif;
       font-size: 1.5rem;
       margin-bottom: 10px;
+      font-weight: 500;
     }
 
     &-second
@@ -39,5 +41,4 @@
       font-weight: 300;
     }
   }
-
 }

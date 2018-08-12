@@ -33,13 +33,27 @@
   }
   .gift-actions
   {
+    &__input-wrapper
+    {
+      position: relative;
+
+      i
+      {
+        position: absolute;
+        font-size: .9rem;
+        color: lighten($main-gray, 40%);
+        top: 17px;
+        left: 5px;
+      }
+    }
+
     &__input
     {
       display: block;
       width: 100%;
-      padding: 15px;
+      padding: 15px 15px 15px 25px;
+      color: lighten($main-gray, 15%);
       border: 1px solid lightgray;
-      color: $main-gray;
     }
 
     &__button

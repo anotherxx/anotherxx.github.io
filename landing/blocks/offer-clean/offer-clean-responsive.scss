@@ -1,49 +1,69 @@
 @media(max-width: $md)
 {
-    .offer-clean
-    {
+    .offer-clean {
       padding-top: 40px;
+
+      &__title
+      {
+        p {
+          font-size: 1.1rem;
+        }
+
+        h1 {
+          font-size: 1.4rem;
+        }
+
+      }
+
+      &__description
+      {
+        &-first
+        {
+          font-size: 1.2rem;
+        }
+
+        &-second
+        {
+          font-size: 1.1rem;
+        }
+      }
+
     }
 }
-@media (max-width: $sm)
-{
-  .offer-clean
-  {
+
+
+
+@media (max-width: $sm) {
+  .offer-clean {
     background-size: auto auto;
     text-align: center;
     padding-top: 40px;
     padding-bottom: -1px;
 
-    &__title
-    {
+    &__title {
       margin-bottom: 30px;
 
-      p
-      {
+      p {
         font-size: .9rem;
       }
 
-      h1
-      {
+      h1 {
         font-size: 1.2rem;
       }
     }
 
-    &__description
-    {
+    &__description {
       margin-bottom: 30px;
-      &-first
-      {
+      &-first {
         font-size: 1.2rem;
       }
     }
 
-    &__purchase
-    {
-        & .btn
-        {
-          font-size: 1rem;
-        }
+    &__purchase {
+      & .btn {
+        font-size: 1rem;
+      }
     }
   }
 }
+

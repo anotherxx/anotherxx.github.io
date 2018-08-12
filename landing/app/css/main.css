@@ -447,12 +447,20 @@ header .top-line {
     font-size: 1.3rem;
     font-weight: 400;
     margin-bottom: 10px; }
+  .gift .gift-actions__input-wrapper {
+    position: relative; }
+    .gift .gift-actions__input-wrapper i {
+      position: absolute;
+      font-size: .9rem;
+      color: #cccccc;
+      top: 17px;
+      left: 5px; }
   .gift .gift-actions__input {
     display: block;
     width: 100%;
-    padding: 15px;
-    border: 1px solid lightgray;
-    color: #666666; }
+    padding: 15px 15px 15px 25px;
+    color: #8c8c8c;
+    border: 1px solid lightgray; }
   .gift .gift-actions__button {
     width: 100%;
     padding: 11px;
@@ -542,7 +550,8 @@ header .top-line {
     margin-top: 10px; } }
 
 .offer-clean {
-  background: url("../img/clean_bg.jpg") no-repeat;
+  background: url("http://www.xn----7sbba0ahcftg3a4pra.xn--p1ai/img/clean_bg.jpg") 150px 0 no-repeat #b3a9a7;
+  background-size: cover;
   color: white;
   padding-top: 70px;
   padding-bottom: 30px; }
@@ -560,14 +569,23 @@ header .top-line {
     .offer-clean__description-first {
       font-family: "PFDinTextCondProMedium" , Helvetica, sans-serif;
       font-size: 1.5rem;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      font-weight: 500; }
     .offer-clean__description-second {
       font-size: 1.1rem;
       font-weight: 300; }
 
 @media (max-width: 992px) {
   .offer-clean {
-    padding-top: 40px; } }
+    padding-top: 40px; }
+    .offer-clean__title p {
+      font-size: 1.1rem; }
+    .offer-clean__title h1 {
+      font-size: 1.4rem; }
+    .offer-clean__description-first {
+      font-size: 1.2rem; }
+    .offer-clean__description-second {
+      font-size: 1.1rem; } }
 
 @media (max-width: 768px) {
   .offer-clean {
