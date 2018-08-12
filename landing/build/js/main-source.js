@@ -3,10 +3,12 @@ $(document).ready(function() {
     ==========   NiceScroll   ==========
     */
     if(screen.width > 768){
-        (function ($) {
+        (function($) {
+
             $("body").niceScroll({
                 cursorborder: false
             });
+
         })(jQuery);
     }
 
@@ -57,6 +59,8 @@ $(document).ready(function() {
     (function($) {
         var links = $(".navigation a");
         var mobileLinks = $(".mobile-navigation a");
+        var singleButton = $(".choose-jalousie");
+
         var doScroll = function(e) {
             var goToClass = "." + e.target.dataset.goTo;
             $('html, body').animate({
@@ -72,14 +76,14 @@ $(document).ready(function() {
             doScroll(e);
             $(".mobile-navigation__links").removeClass('mobile-navigation__links--visible');
         });
+        singleButton.click(function(e){
+           e.preventDefault();
+           doScroll(e);
+        });
+
     })(jQuery);
 
-    /*
-    ==========   Modals   ==========
-    */
-    (function($) {
-        MicroModal.init();
-    })(jQuery);
+
 
 
     /*
@@ -98,7 +102,6 @@ $(document).ready(function() {
     ==========   Map Adress Module   ==========
     */
     (function() {
-
         ymaps.ready(initMap);
 
         function initMap()
