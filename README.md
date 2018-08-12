@@ -1,5 +1,5 @@
 ## SPA приложение для портфолио --> [nerhbest.github.io](https://nerhbest.github.io/)
-## Landing Page для портфолио --> [Link](https://nerhbest.github.ip/landing/build/index.html)
+## Landing Page для портфолио --> [Link](https://nerhbest.github.io/landing/build/index.html)
 ***
 ### Характерстики Spa:
 ### Использованные технологии
